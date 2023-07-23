@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { deleteItemFromCartAsync, selectCartItems, updateCartAsync } from "../features/cart/cartSlice";
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
-import { addOrderAsync } from "../features/order/orderSlice";
-
+import { addOrderAsync, currentOrder} from "../features/order/orderSlice";
+import { selectUserInfo, updateUserAsync } from "../features/user/userSlice";
 
 function Checkout() {
-  const [open, setOpen] = useState(true);
   const items = useSelector(selectCartItems);
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
+  const orderPlace = useSelector(currentOrder);
   const dispatch = useDispatch()
   const totalAmount = items.reduce((amount,item)=>item.price*item.quantity+amount,0)
   const totalItems = items.reduce((total,item)=>item.quantity +total,0);
-  const { register, handleSubmit,reset, formState: { errors } } = useForm();
+  const { register, handleSubmit,reset } = useForm();
 
   const [selectedAddress,setSelectedAddress] = useState(null);
   const [paymentMethod,setPaymentMethod] = useState('cash');
@@ -33,12 +32,18 @@ function Checkout() {
     setPaymentMethod(e.target.value);
   }
   const handleOrder = ()=>{
-    const order ={items, totalAmount, totalItems,user:{username:user.username,email:user.email,id:user.id},paymentMethod, selectedAddress}
-    dispatch(addOrderAsync(order))
+    if(selectedAddress){const order ={items, totalAmount, totalItems,user:{username:user.username,email:user.email,id:user.id},paymentMethod, selectedAddress, status:'pending'}
+    dispatch(addOrderAsync(order));
+  }
+    else{
+      alert('Add a new Address or Select an existing one')
+    }
   }
 
   return (
     <>
+    {!items.length && <Navigate to='/' replace={true}></Navigate>}
+    {orderPlace && <Navigate to={`/order-success/${orderPlace.id}` }replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -167,7 +172,7 @@ function Checkout() {
 
                     <div className="sm:col-span-2">
                       <label
-                        htmlFor="postal-code"
+                        htmlFor="postalCode"
                         className="block text-sm text-left px-2 font-medium leading-6 text-gray-900"
                       >
                         ZIP / Postal code
@@ -175,9 +180,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          {...register('postal-code',{required:'postal code is required'})}
-                          id="postal-code"
-                          autoComplete="postal-code"
+                          {...register('postalCode',{required:'postal code is required'})}
+                          id="postalCode"
+                          autoComplete="postalCode"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
@@ -206,7 +211,7 @@ function Checkout() {
                   <p className="mt-1 text-left text-sm leading-6 text-gray-600 px-2">
                     Choose from existing address
                   </p>
-                  <ul role="list">
+                  <ul >
                     {user.addresses.map((address,index) => (
                       <li
                         key={index}
@@ -306,7 +311,7 @@ function Checkout() {
         </div>
         <div className="border-t border-gray-200 px-0 py-6 sm:px-0">
           <div className="flow-root">
-            <ul role="list" className="-my-6 divide-y divide-gray-200">
+            <ul  className="-my-6 divide-y divide-gray-200">
               {items.map((product) => (
                 <li key={product.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -391,7 +396,6 @@ function Checkout() {
               <button
                 type="button"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
-                onClick={() => setOpen(false)}
                 >
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>

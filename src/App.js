@@ -3,7 +3,6 @@ import './App.css';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-// import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,6 +16,11 @@ import { selectLoggedInUser } from './features/auth/authSlice';
 import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
 import NotFound from './pages/404';
 import OrderSuccess from './pages/OrderSuccess';
+import UserOrdersPage from './pages/UserOrdersPage';
+import UserProfilePage from './pages/UserProfilePage';
+import { fetchLoggedInUserAsync } from './features/user/userSlice';
+import Logout from './features/auth/components/Logout';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 const router = createBrowserRouter([
   {
@@ -46,8 +50,24 @@ const router = createBrowserRouter([
     element: (<Protected><ProductDetailPage></ProductDetailPage></Protected>),
   },
   {
-    path: "/order-success",
-    element: <OrderSuccess></OrderSuccess>,
+    path: "/order-success/:id",
+    element: <Protected><OrderSuccess></OrderSuccess></Protected>,
+  },
+  {
+    path: "/orders",
+    element: <Protected><UserOrdersPage></UserOrdersPage></Protected>,
+  },
+  {
+    path: "/profile",
+    element: <Protected><UserProfilePage></UserProfilePage></Protected>,
+  },
+  {
+    path: "/logout",
+    element: <Protected><Logout></Logout></Protected>,
+  },
+  {
+    path: "/forgotPassword",
+    element:<ForgotPasswordPage></ForgotPasswordPage>,
   },
   {
     path: "*",
@@ -59,7 +79,8 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   useEffect(()=>{
     if(user){
-    dispatch(fetchItemsByUserIdAsync(user.id))
+    dispatch(fetchItemsByUserIdAsync(user.id));
+    dispatch(fetchLoggedInUserAsync(user.id));
   }
   },[dispatch,user])
   return (

@@ -2347,7 +2347,7 @@
           "street": "MOH. Kali pagri",
           "city": "Amroha ",
           "region": "U.P.",
-          "postal-code": "244221"
+          "postalCode": "244221"
         }
       ],
       "id": 1
@@ -2358,22 +2358,31 @@
       "password": "Password1",
       "addresses": [
         {
-          "name": "Chirag ",
+          "name": "hjkf",
+          "email": "dosrauser@gmail.com",
+          "phone": "54756789123",
+          "street": "Kuch toh hai",
+          "city": "Kolkata",
+          "region": "West Bengal",
+          "postalCode": "4645487"
+        },
+        {
+          "name": "Naya User",
+          "email": "manager@gmail.com",
+          "phone": "9456789123",
+          "street": "MOH. Kali pagri",
+          "city": "Patiala",
+          "region": "Punjab",
+          "postalCode": "147001"
+        },
+        {
+          "name": "Chirag",
           "email": "user@gmail.com",
           "phone": "9837045353",
           "street": "MOH. Kali pagri",
           "city": "Amroha ",
           "region": "U.P.",
-          "postal-code": "244221"
-        },
-        {
-          "name": "User2",
-          "email": "user2@gmail.com",
-          "phone": "9456789123",
-          "street": "Kuch toh hai",
-          "city": "Kolkata",
-          "region": "West Bengal",
-          "postal-code": "456454"
+          "postalCode": "244221"
         }
       ],
       "id": 2
@@ -2381,88 +2390,25 @@
   ],
   "cart": [
     {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+      "title": "Brown Perfume",
+      "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+      "price": 40,
+      "discountPercentage": 15.66,
+      "rating": 4,
+      "stock": 52,
+      "brand": "Royal_Mirage",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/1/1.jpg",
-        "https://i.dummyjson.com/data/products/1/2.jpg",
-        "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/4.jpg",
-        "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        "https://i.dummyjson.com/data/products/12/1.jpg",
+        "https://i.dummyjson.com/data/products/12/2.jpg",
+        "https://i.dummyjson.com/data/products/12/3.png",
+        "https://i.dummyjson.com/data/products/12/4.jpg",
+        "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
       ],
       "quantity": 1,
-      "user": 2
-    },
-    {
-      "id": 4,
-      "title": "Stiched Kurta plus trouser",
-      "description": "FABRIC: LILEIN CHEST: 21 LENGHT: 37 TROUSER: (38) :ARABIC LILEIN",
-      "price": 80,
-      "discountPercentage": 15.37,
-      "rating": 4.05,
-      "stock": 148,
-      "brand": "Digital Printed",
-      "category": "womens-dresses",
-      "thumbnail": "https://i.dummyjson.com/data/products/42/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/42/1.png",
-        "https://i.dummyjson.com/data/products/42/2.png",
-        "https://i.dummyjson.com/data/products/42/3.png",
-        "https://i.dummyjson.com/data/products/42/4.jpg",
-        "https://i.dummyjson.com/data/products/42/thumbnail.jpg"
-      ],
-      "quantity": 2,
-      "user": 2
-    },
-    {
-      "title": "Infinix INBOOK",
-      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-      "price": 1099,
-      "discountPercentage": 11.83,
-      "rating": 4.54,
-      "stock": 96,
-      "brand": "Infinix",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/9/1.jpg",
-        "https://i.dummyjson.com/data/products/9/2.png",
-        "https://i.dummyjson.com/data/products/9/3.png",
-        "https://i.dummyjson.com/data/products/9/4.jpg",
-        "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 1,
-      "id": 5
-    },
-    {
-      "title": "Handbag For Girls",
-      "description": "This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.",
-      "price": 23,
-      "discountPercentage": 17.5,
-      "rating": 4.91,
-      "stock": 27,
-      "brand": "LouisWill",
-      "category": "womens-bags",
-      "thumbnail": "https://i.dummyjson.com/data/products/72/thumbnail.webp",
-      "images": [
-        "https://i.dummyjson.com/data/products/72/1.jpg",
-        "https://i.dummyjson.com/data/products/72/2.png",
-        "https://i.dummyjson.com/data/products/72/3.webp",
-        "https://i.dummyjson.com/data/products/72/4.jpg",
-        "https://i.dummyjson.com/data/products/72/thumbnail.webp"
-      ],
-      "quantity": 2,
-      "user": 1,
-      "id": 6
+      "user": 2,
+      "id": 1
     }
   ],
   "orders": [
@@ -2518,7 +2464,72 @@
         "email": "user@gmail.com",
         "id": 2
       },
-      "paymentMethod": "card",
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag ",
+        "email": "user@gmail.com",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 4.69,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/1/1.jpg",
+            "https://i.dummyjson.com/data/products/1/2.jpg",
+            "https://i.dummyjson.com/data/products/1/3.jpg",
+            "https://i.dummyjson.com/data/products/1/4.jpg",
+            "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2
+        },
+        {
+          "id": 4,
+          "title": "Stiched Kurta plus trouser",
+          "description": "FABRIC: LILEIN CHEST: 21 LENGHT: 37 TROUSER: (38) :ARABIC LILEIN",
+          "price": 80,
+          "discountPercentage": 15.37,
+          "rating": 4.05,
+          "stock": 148,
+          "brand": "Digital Printed",
+          "category": "womens-dresses",
+          "thumbnail": "https://i.dummyjson.com/data/products/42/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/42/1.png",
+            "https://i.dummyjson.com/data/products/42/2.png",
+            "https://i.dummyjson.com/data/products/42/3.png",
+            "https://i.dummyjson.com/data/products/42/4.jpg",
+            "https://i.dummyjson.com/data/products/42/thumbnail.jpg"
+          ],
+          "quantity": 2,
+          "user": 2
+        }
+      ],
+      "totalAmount": 709,
+      "totalItems": 3,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
       "selectedAddress": {
         "name": "User2",
         "email": "user2@gmail.com",
@@ -2526,9 +2537,180 @@
         "street": "Kuch toh hai",
         "city": "Kolkata",
         "region": "West Bengal",
-        "postal-code": "456454"
+        "postalCode": "456454"
       },
-      "id": 1
+      "status": "pending",
+      "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/9/1.jpg",
+            "https://i.dummyjson.com/data/products/9/2.png",
+            "https://i.dummyjson.com/data/products/9/3.png",
+            "https://i.dummyjson.com/data/products/9/4.jpg",
+            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 5
+        },
+        {
+          "title": "Handbag For Girls",
+          "description": "This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.",
+          "price": 23,
+          "discountPercentage": 17.5,
+          "rating": 4.91,
+          "stock": 27,
+          "brand": "LouisWill",
+          "category": "womens-bags",
+          "thumbnail": "https://i.dummyjson.com/data/products/72/thumbnail.webp",
+          "images": [
+            "https://i.dummyjson.com/data/products/72/1.jpg",
+            "https://i.dummyjson.com/data/products/72/2.png",
+            "https://i.dummyjson.com/data/products/72/3.webp",
+            "https://i.dummyjson.com/data/products/72/4.jpg",
+            "https://i.dummyjson.com/data/products/72/thumbnail.webp"
+          ],
+          "quantity": 2,
+          "user": 1,
+          "id": 6
+        }
+      ],
+      "totalAmount": 1145,
+      "totalItems": 3,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        },
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        }
+      ],
+      "totalAmount": 1398,
+      "totalItems": 2,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag ",
+        "email": "user@gmail.com",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "perfume Oil",
+          "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+          "price": 13,
+          "discountPercentage": 8.4,
+          "rating": 4.26,
+          "stock": 65,
+          "brand": "Impression of Acqua Di Gio",
+          "category": "fragrances",
+          "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/11/1.jpg",
+            "https://i.dummyjson.com/data/products/11/2.jpg",
+            "https://i.dummyjson.com/data/products/11/3.jpg",
+            "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
+          ],
+          "quantity": 2,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 26,
+      "totalItems": 2,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "User2",
+        "email": "user2@gmail.com",
+        "phone": "9456789123",
+        "street": "Kuch toh hai",
+        "city": "Kolkata",
+        "region": "West Bengal",
+        "postalCode": "456454"
+      },
+      "status": "pending",
+      "id": 5
     }
   ]
 }
