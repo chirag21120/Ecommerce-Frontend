@@ -7,7 +7,7 @@
       "price": 549,
       "discountPercentage": 12.96,
       "rating": 4.69,
-      "stock": 94,
+      "stock": 0,
       "brand": "Apple",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
@@ -1838,6 +1838,45 @@
         "https://i.dummyjson.com/data/products/100/3.jpg",
         "https://i.dummyjson.com/data/products/100/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "New Mac Book Air ",
+      "description": "Mac Book Air 2023",
+      "brand": "Apple",
+      "category": "laptops",
+      "price": "1100",
+      "discountPercentage": "2",
+      "stock": "39",
+      "thumbnail": "https://idestiny.in/wp-content/uploads/2021/10/MacBook_Pro_16-in_Silver_PDP_Image_Position-1__en-IN.jpg",
+      "images": [
+        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/og-macbook-pro-202301?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1670261864358",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQ7dhMaQqZCbuUW3ekJghgVvPMKCau6er3HnrRgVaJO9lES876UZ-iEzHBWCIIavMrTo&usqp=CAU",
+        "https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/computer/z/b/e/na-thin-and-light-laptop-apple-original-imag5jt7rjbrvzta.jpeg?q=20",
+        "https://fdn.gsmarena.com/imgroot/news/23/06/apple-macbook-air-15/-1200/gsmarena_002.jpg"
+      ],
+      "rating": "4.3",
+      "admin": 3,
+      "id": 101
+    },
+    {
+      "title": "New Mac Book Air 2",
+      "description": "2nd Mac Book Air 2023",
+      "brand": "Apple",
+      "category": "laptops",
+      "price": 1200,
+      "discountPercentage": 3,
+      "stock": 38,
+      "thumbnail": "https://idestiny.in/wp-content/uploads/2021/10/MacBook_Pro_16-in_Silver_PDP_Image_Position-1__en-IN.jpg",
+      "images": [
+        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/og-macbook-pro-202301?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1670261864358",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQ7dhMaQqZCbuUW3ekJghgVvPMKCau6er3HnrRgVaJO9lES876UZ-iEzHBWCIIavMrTo&usqp=CAU",
+        "https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/computer/z/b/e/na-thin-and-light-laptop-apple-original-imag5jt7rjbrvzta.jpeg?q=20",
+        "https://fdn.gsmarena.com/imgroot/news/23/06/apple-macbook-air-15/-1200/gsmarena_002.jpg"
+      ],
+      "rating": 4.3,
+      "admin": 3,
+      "id": 102,
+      "deleted": true
     }
   ],
   "brands": [
@@ -2339,6 +2378,7 @@
       "username": "chirag",
       "email": "cgupta_be21@thapar.edu",
       "password": "Password1",
+      "role": "user",
       "addresses": [
         {
           "name": "Chirag",
@@ -2356,6 +2396,7 @@
       "username": "userII",
       "email": "user@gmail.com",
       "password": "Password1",
+      "role": "user",
       "addresses": [
         {
           "name": "hjkf",
@@ -2386,26 +2427,34 @@
         }
       ],
       "id": 2
+    },
+    {
+      "username": "Admin",
+      "email": "admin@gmail.com",
+      "password": "Password1",
+      "addresses": [],
+      "role": "admin",
+      "id": 3
     }
   ],
   "cart": [
     {
-      "title": "Brown Perfume",
-      "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
-      "price": 40,
-      "discountPercentage": 15.66,
-      "rating": 4,
-      "stock": 52,
-      "brand": "Royal_Mirage",
-      "category": "fragrances",
-      "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+      "title": "MacBook Pro",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 1749,
+      "discountPercentage": 11.02,
+      "rating": 4.57,
+      "stock": 83,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
       "images": [
-        "https://i.dummyjson.com/data/products/12/1.jpg",
-        "https://i.dummyjson.com/data/products/12/2.jpg",
-        "https://i.dummyjson.com/data/products/12/3.png",
-        "https://i.dummyjson.com/data/products/12/4.jpg",
-        "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/2.jpg",
+        "https://i.dummyjson.com/data/products/6/3.png",
+        "https://i.dummyjson.com/data/products/6/4.jpg"
       ],
+      "productId": 6,
       "quantity": 1,
       "user": 2,
       "id": 1
@@ -2474,7 +2523,7 @@
         "region": "U.P.",
         "postalCode": "244221"
       },
-      "status": "pending",
+      "status": "dispatched",
       "id": 1
     },
     {
@@ -2604,7 +2653,7 @@
         "region": "U.P.",
         "postalCode": "244221"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 3
     },
     {
@@ -2709,8 +2758,462 @@
         "region": "West Bengal",
         "postalCode": "456454"
       },
-      "status": "pending",
+      "status": "cancelled",
       "id": 5
+    },
+    {
+      "items": [
+        {
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/12/1.jpg",
+            "https://i.dummyjson.com/data/products/12/2.jpg",
+            "https://i.dummyjson.com/data/products/12/3.png",
+            "https://i.dummyjson.com/data/products/12/4.jpg",
+            "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        },
+        {
+          "title": "New Mac Book Air 2",
+          "description": "2nd Mac Book Air 2023",
+          "brand": "Apple",
+          "category": "laptops",
+          "price": 1200,
+          "discountPercentage": 3,
+          "stock": 38,
+          "thumbnail": "https://idestiny.in/wp-content/uploads/2021/10/MacBook_Pro_16-in_Silver_PDP_Image_Position-1__en-IN.jpg",
+          "images": [
+            "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/og-macbook-pro-202301?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1670261864358",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQ7dhMaQqZCbuUW3ekJghgVvPMKCau6er3HnrRgVaJO9lES876UZ-iEzHBWCIIavMrTo&usqp=CAU",
+            "https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/computer/z/b/e/na-thin-and-light-laptop-apple-original-imag5jt7rjbrvzta.jpeg?q=20",
+            "https://fdn.gsmarena.com/imgroot/news/23/06/apple-macbook-air-15/-1200/gsmarena_002.jpg"
+          ],
+          "rating": 4.3,
+          "admin": 3,
+          "deleted": true,
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        },
+        {
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/7/1.jpg",
+            "https://i.dummyjson.com/data/products/7/2.jpg",
+            "https://i.dummyjson.com/data/products/7/3.jpg",
+            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 3
+        }
+      ],
+      "totalAmount": 2739,
+      "totalItems": 3,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Naya User",
+        "email": "manager@gmail.com",
+        "phone": "9456789123",
+        "street": "MOH. Kali pagri",
+        "city": "Patiala",
+        "region": "Punjab",
+        "postalCode": "147001"
+      },
+      "status": "pending",
+      "id": 6
+    },
+    {
+      "items": [
+        {
+          "title": "New Mac Book Air 2",
+          "description": "2nd Mac Book Air 2023",
+          "brand": "Apple",
+          "category": "laptops",
+          "price": 1200,
+          "discountPercentage": 3,
+          "stock": 38,
+          "thumbnail": "https://idestiny.in/wp-content/uploads/2021/10/MacBook_Pro_16-in_Silver_PDP_Image_Position-1__en-IN.jpg",
+          "images": [
+            "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/og-macbook-pro-202301?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1670261864358",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQ7dhMaQqZCbuUW3ekJghgVvPMKCau6er3HnrRgVaJO9lES876UZ-iEzHBWCIIavMrTo&usqp=CAU",
+            "https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/computer/z/b/e/na-thin-and-light-laptop-apple-original-imag5jt7rjbrvzta.jpeg?q=20",
+            "https://fdn.gsmarena.com/imgroot/news/23/06/apple-macbook-air-15/-1200/gsmarena_002.jpg"
+          ],
+          "rating": 4.3,
+          "admin": 3,
+          "deleted": true,
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1200,
+      "totalItems": 1,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "New Mac Book Air 2",
+          "description": "2nd Mac Book Air 2023",
+          "brand": "Apple",
+          "category": "laptops",
+          "price": 1200,
+          "discountPercentage": 3,
+          "stock": 38,
+          "thumbnail": "https://idestiny.in/wp-content/uploads/2021/10/MacBook_Pro_16-in_Silver_PDP_Image_Position-1__en-IN.jpg",
+          "images": [
+            "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/og-macbook-pro-202301?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1670261864358",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQ7dhMaQqZCbuUW3ekJghgVvPMKCau6er3HnrRgVaJO9lES876UZ-iEzHBWCIIavMrTo&usqp=CAU",
+            "https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/computer/z/b/e/na-thin-and-light-laptop-apple-original-imag5jt7rjbrvzta.jpeg?q=20",
+            "https://fdn.gsmarena.com/imgroot/news/23/06/apple-macbook-air-15/-1200/gsmarena_002.jpg"
+          ],
+          "rating": 4.3,
+          "admin": 3,
+          "deleted": true,
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 2099,
+      "totalItems": 2,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 8
+    },
+    {
+      "items": [
+        {
+          "title": "lighting ceiling kitchen",
+          "description": "Wholesale slim hanging decorative kid room lighting ceiling kitchen chandeliers pendant light modern",
+          "price": 30,
+          "discountPercentage": 14.89,
+          "rating": 4.83,
+          "stock": 96,
+          "brand": "lightingbrilliance",
+          "category": "lighting",
+          "thumbnail": "https://i.dummyjson.com/data/products/96/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/96/1.jpg",
+            "https://i.dummyjson.com/data/products/96/2.jpg",
+            "https://i.dummyjson.com/data/products/96/3.jpg",
+            "https://i.dummyjson.com/data/products/96/4.jpg",
+            "https://i.dummyjson.com/data/products/96/thumbnail.jpg"
+          ],
+          "quantity": 2,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 52,
+      "totalItems": 2,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 9
+    },
+    {
+      "items": [
+        {
+          "title": "Sneaker shoes",
+          "description": "Synthetic Leather Casual Sneaker shoes for Women/girls Sneakers For Women",
+          "price": 120,
+          "discountPercentage": 10.37,
+          "rating": 4.19,
+          "stock": 50,
+          "brand": "Synthetic Leather",
+          "category": "womens-shoes",
+          "thumbnail": "https://i.dummyjson.com/data/products/47/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/47/1.jpg",
+            "https://i.dummyjson.com/data/products/47/2.jpg",
+            "https://i.dummyjson.com/data/products/47/3.jpg",
+            "https://i.dummyjson.com/data/products/47/thumbnail.jpeg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "Leather Strap Skeleton Watch",
+          "description": "Leather Strap Skeleton Watch for Men - Stylish and Latest Design",
+          "price": 46,
+          "discountPercentage": 10.2,
+          "rating": 4.98,
+          "stock": 61,
+          "brand": "Strap Skeleton",
+          "category": "mens-watches",
+          "thumbnail": "https://i.dummyjson.com/data/products/64/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/64/1.jpg",
+            "https://i.dummyjson.com/data/products/64/2.webp",
+            "https://i.dummyjson.com/data/products/64/3.jpg",
+            "https://i.dummyjson.com/data/products/64/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 149,
+      "totalItems": 2,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 10
+    },
+    {
+      "items": [
+        {
+          "title": "3 DOOR PORTABLE",
+          "description": "Material: Stainless Steel and Fabric  Item Size: 110 cm x 45 cm x 175 cm Package Contents: 1 Storage Wardrobe",
+          "price": 41,
+          "discountPercentage": 7.98,
+          "rating": 4.06,
+          "stock": 68,
+          "brand": "AmnaMart",
+          "category": "furniture",
+          "thumbnail": "https://i.dummyjson.com/data/products/35/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/35/1.jpg",
+            "https://i.dummyjson.com/data/products/35/2.jpg",
+            "https://i.dummyjson.com/data/products/35/3.jpg",
+            "https://i.dummyjson.com/data/products/35/4.jpg",
+            "https://i.dummyjson.com/data/products/35/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 38,
+      "totalItems": 1,
+      "user": {
+        "username": "chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "cgupta_be21@thapar.edu",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 11
+    },
+    {
+      "items": [
+        {
+          "title": "3D Embellishment Art Lamp",
+          "description": "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
+          "price": 20,
+          "discountPercentage": 16.49,
+          "rating": 4.82,
+          "stock": 54,
+          "brand": "LED Lights",
+          "category": "home-decoration",
+          "thumbnail": "https://i.dummyjson.com/data/products/28/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/28/1.jpg",
+            "https://i.dummyjson.com/data/products/28/2.jpg",
+            "https://i.dummyjson.com/data/products/28/3.png",
+            "https://i.dummyjson.com/data/products/28/4.jpg",
+            "https://i.dummyjson.com/data/products/28/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 17,
+      "totalItems": 1,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Chirag",
+        "email": "user@gmail.com",
+        "phone": "9837045353",
+        "street": "MOH. Kali pagri",
+        "city": "Amroha ",
+        "region": "U.P.",
+        "postalCode": "244221"
+      },
+      "status": "pending",
+      "id": 12
+    },
+    {
+      "items": [
+        {
+          "title": "LouisWill Men Sunglasses",
+          "description": "LouisWill Men Sunglasses Polarized Sunglasses UV400 Sunglasses Day Night Dual Use Safety Driving Night Vision Eyewear AL-MG Frame Sun Glasses with Free Box for Drivers",
+          "price": 50,
+          "discountPercentage": 11.27,
+          "rating": 4.98,
+          "stock": 92,
+          "brand": "LouisWill",
+          "category": "sunglasses",
+          "thumbnail": "https://i.dummyjson.com/data/products/85/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/85/1.jpg",
+            "https://i.dummyjson.com/data/products/85/2.jpg",
+            "https://i.dummyjson.com/data/products/85/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        },
+        {
+          "title": "t Temperature Controller Incubator Controller",
+          "description": "Both Heat and Cool Purpose, Temperature control range; -50 to +110, Temperature measurement accuracy; 0.1, Control accuracy; 0.1",
+          "price": 40,
+          "discountPercentage": 11.3,
+          "rating": 4.54,
+          "stock": 37,
+          "brand": "W1209 DC12V",
+          "category": "automotive",
+          "thumbnail": "https://i.dummyjson.com/data/products/87/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/87/1.jpg",
+            "https://i.dummyjson.com/data/products/87/2.jpg",
+            "https://i.dummyjson.com/data/products/87/3.jpg",
+            "https://i.dummyjson.com/data/products/87/4.jpg",
+            "https://i.dummyjson.com/data/products/87/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        }
+      ],
+      "totalAmount": 79,
+      "totalItems": 2,
+      "user": {
+        "username": "userII",
+        "email": "user@gmail.com",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "hjkf",
+        "email": "dosrauser@gmail.com",
+        "phone": "54756789123",
+        "street": "Kuch toh hai",
+        "city": "Kolkata",
+        "region": "West Bengal",
+        "postalCode": "4645487"
+      },
+      "status": "pending",
+      "id": 13
     }
   ]
 }

@@ -50,13 +50,16 @@ function UserProfile() {
           <h5 className="text-xl text-left font-bold tracking-tight text-red-900">
             email address: {user.email}
           </h5>
+          {user.role==='admin' &&<h5 className="text-xl text-left font-bold tracking-tight text-red-900">
+            role: {user.role}
+          </h5>}
         </div>
         <div className="border-t flex flex-col border-gray-200 px-4 py-6 sm:px-6">
           <button
           onClick={e=>{setShowAddAddressForm(true); setSelectedEditIndex(-1)}}
             type="submit"
-            class="rounded-md text-left bg-green-600 px-3 my-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            style={{ "max-width": "150px" }}
+            className="rounded-md text-left bg-green-600 px-3 my-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            style={{ "maxWidth": "150px" }}
           >
             Add New Address
           </button>

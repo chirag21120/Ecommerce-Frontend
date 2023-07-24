@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsByIdAsync, selectedProduct } from '../ProductSlice';
+import { fetchProductsByIdAsync, selectedProduct } from '../../product-list/ProductSlice';
 // import { fetchProductById } from '../productAPI';
 import { useParams } from 'react-router-dom';
-import { addToCartAsync, selectCartItems } from '../../cart/cartSlice';
+import { addToCartAsync } from '../../cart/cartSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
-import { discountedPrice } from '../../../app/constants';
 
 const colors= [
     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -35,10 +34,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductDetails() {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const [selectedSize, setSelectedSize] = useState(sizes[2]);
-  const items = useSelector(selectCartItems);
+export default function AdminProductDetails() {
+  const [selectedColor, setSelectedColor] = useState(colors[0])
+  const [selectedSize, setSelectedSize] = useState(sizes[2])
   const user = useSelector(selectLoggedInUser);
   const product = useSelector(selectedProduct);
   const dispatch = useDispatch();
@@ -49,13 +47,9 @@ export default function ProductDetails() {
   
   const handleCart =(e)=>{
     e.preventDefault()
-    if(items.findIndex(item=>item.productId===product.id)<0)
-    {const newItem = {...product,productId:product.id,quantity:1,user:user.id};
+    const newItem = {...product,quantity:1,user:user.id};
     delete newItem['id'];
-    dispatch(addToCartAsync(newItem));}
-    else{
-      alert("Item already in Cart")
-    }
+    dispatch(addToCartAsync(newItem));
   }
 
   return (
@@ -133,8 +127,8 @@ export default function ProductDetails() {
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">${discountedPrice(product)}</p>
-            <p className="text-3xl tracking-tight line-through text-gray-400">${product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${product.price}</p>
+
             {/* Reviews */}
             <div className="mt-6">
               <h3 className="sr-only">Reviews</h3>

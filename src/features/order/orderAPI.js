@@ -11,3 +11,36 @@ export function addOrder(order) {
   }
   );
 }
+
+export function fetchAllOrders(pagination,sort) {
+  return new  Promise(async(resolve) =>{
+    //To-Do we will not hard code 
+    let queryString = '';
+  for(let key in pagination){
+    queryString+= `${key}=${pagination[key]}&`;
+  }
+  for(let key in sort){
+    queryString+= `${key}=${sort[key]}&`;
+  }
+    //To-Do we will not hard code  
+    // const respense = await fetch(`http://localhost:8080/orders?items.admin=${admin}&`+queryString)
+    const respense = await fetch('http://localhost:8080/orders?'+queryString)
+    const data = await respense.json();
+    const totalOrders = await respense.headers.get('X-Total-Count');
+    resolve({data:{orders:data,totalOrders:+totalOrders}});
+  }
+  );
+}
+
+export function updateOrder(order) {
+  return new Promise(async(resolve) =>{
+    const respense = await fetch('http://localhost:8080/orders/'+order.id,{
+      method:'PATCH',
+      body: JSON.stringify(order),
+      headers:{'content-type': 'application/json'}
+    })
+    const data = await respense.json();
+    resolve({data});
+  }
+  );
+}
