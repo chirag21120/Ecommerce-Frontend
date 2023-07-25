@@ -20,8 +20,9 @@ import {
   selectCategories,
 } from "../../product-list/ProductSlice";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
-import { fetchAdminProductsByFiltersAsync, selectAllProducts, selectTotalItems } from "../adminSlice";
+import { fetchAdminProductsByFiltersAsync, selectAdminStatus, selectAllProducts, selectTotalItems } from "../adminSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
+import { BallTriangle } from "react-loader-spinner";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -40,6 +41,7 @@ export default function AdminProductList() {
   const [page, setPage] = useState(1);
   const products = useSelector(selectAllProducts);
   const totalItems = useSelector(selectTotalItems);
+  const status = useSelector(selectAdminStatus);
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const user = useSelector(selectLoggedInUser);
@@ -201,7 +203,7 @@ export default function AdminProductList() {
                     </Link>
                   </div>
                 {/* This is product List component */}
-                <ProductGrid products={products}></ProductGrid>
+                <ProductGrid products={products} status={status}></ProductGrid>
               </div>
             </div>
           </section>
@@ -396,12 +398,23 @@ function MobileFilter({
   );
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products,status }) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {products &&
+        {status==='loading'?
+        <div className="flex justify-center h-screen "> <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
+        wrapperClass={{}}
+        wrapperStyle=""
+        visible={true}
+      /></div>:null}
+          {status==='idle'&&products &&
             products.map((product) => (
               <div>
               <Link to={`/product-detail/${product.id}`}>

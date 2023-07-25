@@ -24,7 +24,13 @@ import ProtectedAdmin from "./features/auth/components/ProtectedAdmin";
 
 import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_CENTER
+};
 const router = createBrowserRouter([
   {
     path: "/",
@@ -158,7 +164,9 @@ function App() {
   }, [dispatch, user]);
   return (
     <div className="App">
+      <Provider template={AlertTemplate} {...options}>
       <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }

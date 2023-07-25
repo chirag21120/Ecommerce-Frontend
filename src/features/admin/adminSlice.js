@@ -113,6 +113,7 @@ export const adminSlice = createSlice({
           (product)=>product.id === action.payload.id
         )
         state.products[index] = action.payload;
+        state.selectedProduct = action.payload;
       });
   },
 });
@@ -121,5 +122,6 @@ export const {clearSelectedProduct } = adminSlice.actions;
 
 export const selectAllProducts = (state) => state.admin.products;
 export const selectTotalItems = (state)=> state.admin.totalItems;
+export const selectAdminStatus = (state)=> state.admin.status;
 export const selectedProduct = (state)=>state.admin.selectedProduct;
 export default adminSlice.reducer;

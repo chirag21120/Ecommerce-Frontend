@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsByIdAsync, selectedProduct } from '../ProductSlice';
+import { fetchProductsByIdAsync, selectProductListStatus, selectedProduct } from '../ProductSlice';
 // import { fetchProductById } from '../productAPI';
 import { useParams } from 'react-router-dom';
 import { addToCartAsync, selectCartItems } from '../../cart/cartSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { discountedPrice } from '../../../app/constants';
+import { useAlert } from "react-alert";
+import { BallTriangle } from 'react-loader-spinner';
 
 const colors= [
     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -41,8 +43,10 @@ export default function ProductDetails() {
   const items = useSelector(selectCartItems);
   const user = useSelector(selectLoggedInUser);
   const product = useSelector(selectedProduct);
+  const status = useSelector(selectProductListStatus);
   const dispatch = useDispatch();
   const params = useParams();
+  const alert = useAlert();
   useEffect(()=>{
     dispatch(fetchProductsByIdAsync(params.id))
   },[dispatch,params.id])
@@ -52,17 +56,30 @@ export default function ProductDetails() {
     if(items.findIndex(item=>item.productId===product.id)<0)
     {const newItem = {...product,productId:product.id,quantity:1,user:user.id};
     delete newItem['id'];
-    dispatch(addToCartAsync(newItem));}
+    dispatch(addToCartAsync(newItem));
+    alert.success('Item Added To Cart!')
+  }
     else{
-      alert("Item already in Cart")
+      alert.error('Item Already in Cart')
     }
   }
 
   return (
     <div className="bg-white">
-      {product &&(<div className="pt-6">
+      {status==='loading'?
+        <div className="flex justify-center h-screen"> <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
+        wrapperClass={{}}
+        wrapperStyle=""
+        visible={true}
+      /></div>:null}
+      {status==='idle' &&product &&(<div className="pt-6">
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <ol className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {product.breadcrumbs && product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
@@ -280,7 +297,7 @@ export default function ProductDetails() {
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                   {highlights && highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
+                    <li key={highlight} className="text-gray-400 text-left">
                       <span className="text-gray-600">{highlight}</span>
                     </li>
                   ))}

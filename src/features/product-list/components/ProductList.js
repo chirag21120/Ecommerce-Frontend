@@ -19,10 +19,12 @@ import {
   selectAllProducts,
   selectBrands,
   selectCategories,
+  selectProductListStatus,
   selectTotalItems,
 } from "../ProductSlice";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
 import { Pagination } from "../../common/Pagination";
+import { BallTriangle } from  'react-loader-spinner'
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -43,6 +45,7 @@ export default function ProductList() {
   const totalItems = useSelector(selectTotalItems);
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
+  const status = useSelector(selectProductListStatus);
 
   const filters = [
     {
@@ -192,7 +195,7 @@ export default function ProductList() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* This is product List component */}
-                <ProductGrid products={products}></ProductGrid>
+                <ProductGrid products={products} status={status}></ProductGrid>
               </div>
             </div>
           </section>
@@ -387,61 +390,74 @@ function MobileFilter({
   );
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products ,status}) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {products &&
-            products.map((product) => !product.deleted?(
-              <Link to={`/product-detail/${product.id}`}>
-                <div
-                  key={product.id}
-                  className="group relative border-solid border-2 p-2 border-gray-200"
-                >
-                  <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
+        {status==='loading'?
+        <div className="flex justify-center h-screen "> <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
+        wrapperClass={{}}
+        wrapperStyle=""
+        visible={true}
+      /></div>:null}
+          {status==='idle' && products &&
+            products.map((product) =>
+              !product.deleted ? (
+                <Link to={`/product-detail/${product.id}`}>
+                  <div
+                    key={product.id}
+                    className="group relative border-solid border-2 p-2 border-gray-200"
+                  >
+                    <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      />
+                    </div>
+                    <div className="mt-4 flex justify-between">
+                      <div>
+                        <h3 className="text-sm text-gray-700">
+                          <div>
+                            <p
+                              className="truncate "
+                              style={{
+                                maxWidth: "180px",
+                              }}
+                            >
+                              {product.title}
+                            </p>
+                          </div>
+                        </h3>
+                        <span className="mt-1 text-sm float-left text-gray-500 ">
+                          <StarIcon className="w-5 h-5 inline"></StarIcon>
+                          <span className="align-bottom">{product.rating}</span>
+                        </span>
+                      </div>
+                      <div>
+                        <p className="text-sm block font-medium text-gray-900">
+                          $ {discountedPrice(product)}
+                        </p>
+                        <p className="text-sm block line-through font-medium text-gray-400">
+                          $ {product.price}
+                        </p>
+                      </div>
+                    </div>
+                    {product.stock <= 0 && (
+                      <div>
+                        <p className="text-sm text-red-400">Out of Stock</p>
+                      </div>
+                    )}
                   </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
-                        <div>
-                          <p
-                            className="truncate "
-                            style={{
-                              maxWidth: "180px",
-                            }}
-                          >
-                            {product.title}
-                          </p>
-                        </div>
-                      </h3>
-                      <span className="mt-1 text-sm float-left text-gray-500 ">
-                        <StarIcon className="w-5 h-5 inline"></StarIcon>
-                        <span className="align-bottom">{product.rating}</span>
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm block font-medium text-gray-900">
-                        $ {discountedPrice(product)}
-                      </p>
-                      <p className="text-sm block line-through font-medium text-gray-400">
-                        $ {product.price}
-                      </p>
-                    </div>
-                  </div>
-                  {product.stock <= 0 && (
-                    <div>
-                      <p className="text-sm text-red-400">Out of Stock</p>
-                    </div>
-                  )}
-                </div>
-              </Link>
-            ):null)}
+                </Link>
+              ) : null
+            )}
         </div>
       </div>
     </div>
