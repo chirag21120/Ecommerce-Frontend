@@ -6,7 +6,6 @@ import { fetchProductsByIdAsync, selectProductListStatus, selectedProduct } from
 // import { fetchProductById } from '../productAPI';
 import { useParams } from 'react-router-dom';
 import { addToCartAsync, selectCartItems } from '../../cart/cartSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
 import { discountedPrice } from '../../../app/constants';
 import { useAlert } from "react-alert";
 import { BallTriangle } from 'react-loader-spinner';
@@ -41,7 +40,6 @@ export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const items = useSelector(selectCartItems);
-  const user = useSelector(selectLoggedInUser);
   const product = useSelector(selectedProduct);
   const status = useSelector(selectProductListStatus);
   const dispatch = useDispatch();
@@ -54,7 +52,7 @@ export default function ProductDetails() {
   const handleCart =(e)=>{
     e.preventDefault()
     if(items.findIndex(item=>item.product.id===product.id)<0)
-    {const newItem = {product:product.id,quantity:1,user:user.id};
+    {const newItem = {product:product.id,quantity:1};
     dispatch(addToCartAsync(newItem));
     alert.success('Item Added To Cart!')
   }

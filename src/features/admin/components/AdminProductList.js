@@ -84,11 +84,11 @@ export default function AdminProductList() {
   };
 
   useEffect(() => {
-    if(user.id){
+    if(user){
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchAdminProductsByFiltersAsync({ filter, sort, pagination,admin:user.id }));
+    dispatch(fetchAdminProductsByFiltersAsync({ filter, sort, pagination }));
   }
-  }, [dispatch, filter, sort, page,user.id]);
+  }, [dispatch, filter, sort, page,user]);
 
   useEffect(() => {
     setPage(1);
