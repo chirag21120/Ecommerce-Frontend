@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectBrands,
@@ -16,6 +15,8 @@ import {
 } from "../adminSlice";
 import { Link, useParams } from "react-router-dom";
 import Modal from "../../common/Modal";
+import { useAlert } from "react-alert";
+
 function ProductForm() {
   const brands = useSelector(selectBrands);
   const user = useSelector(selectLoggedInUser);
@@ -25,6 +26,7 @@ function ProductForm() {
   const params = useParams();
   const selectedProduct1 = useSelector(selectedProduct);
   const [openModal,setOpenModal] = useState(null);
+  const alert = useAlert();
   useEffect(() => {
     if (params.id) {
       dispatch(fetchProductsByIdAsync(params.id));
@@ -81,9 +83,11 @@ function ProductForm() {
           if (params.id) {
             product.id = params.id;
             dispatch(updateProductAsync(product));
+            alert.success('Product Updated');
             reset();
           } else {
             dispatch(createProductAsync(product));
+            alert.success("Product Created");
             reset();
           }
           reset();
@@ -96,7 +100,7 @@ function ProductForm() {
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              {selectedProduct1.deleted && <h2 className="text-red-500 sm:col-span-4">This Product Is deleted</h2>}
+              {selectedProduct1&&selectedProduct1.deleted && <h2 className="text-red-500 sm:col-span-4">This Product Is deleted</h2>}
               <div className="sm:col-span-4">
                 <label
                   htmlFor="username"
@@ -379,7 +383,7 @@ function ProductForm() {
           </button>
         </div>
       </form>
-      <Modal
+      {selectedProduct1 && <Modal
         title={`Delete ${selectedProduct1.title}`}
         message="Are you sure you want to delete this item"
         dangerOption="Delete"
@@ -387,7 +391,7 @@ function ProductForm() {
         dangerAction={handleDelete}
         cancelAction={() => setOpenModal(null)}
         showModal={openModal}
-      ></Modal>
+      ></Modal>}
     </>
   );
 }

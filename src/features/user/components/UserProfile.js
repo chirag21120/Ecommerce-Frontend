@@ -236,7 +236,7 @@ function UserProfile() {
           <p className="mt-0.5 text-base text-gray-900 font-medium text-left">
             Your Address:
           </p>
-          {user.addresses.map((address, index) => (
+          {user.addresses && user.addresses.map((address, index) => (
             <div>
               {selectedEditIndex === index ? (
                 <form

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "../../auth/authSlice";
+// import { selectLoggedInUser } from "../../auth/authSlice";
 import {
   PencilIcon,
   EyeIcon,
@@ -22,23 +22,19 @@ function AdminOrders() {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);
   const totalOrders = useSelector(selecteTotalOrders);
-  const user = useSelector(selectLoggedInUser);
+  // const user = useSelector(selectLoggedInUser);
   const [editableItemId, setEditableItemId] = useState(-1);
 
   const chooseColor = (status) => {
     switch (status) {
       case "pending":
         return `bg-purple-200 text-purple-600`;
-        break;
       case "dispatched":
         return `bg-yellow-200 text-yellow-600`;
-        break;
       case "delivered":
         return `bg-green-200 text-green-600`;
-        break;
       case "cancelled":
         return `bg-red-200 text-red-600`;
-        break;
       default:
         break;
     }
@@ -138,13 +134,13 @@ function AdminOrders() {
                                   <div className="mr-2">
                                     <img
                                       className="w-6 h-6 rounded-full"
-                                      src={item.thumbnail}
-                                      alt={item.title}
+                                      src={item.product.thumbnail}
+                                      alt={item.product.title}
                                     />
                                   </div>
                                   <span>
-                                    {item.title} - {item.quantity} - $
-                                    {item.price}
+                                    {item.product.title} - {item.product.quantity} - $
+                                    {item.product.price}
                                   </span>
                                 </div>
                               ))}

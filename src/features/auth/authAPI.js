@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 export function createUser(userData) {
   return new Promise(async(resolve) =>{
-    const respense = await fetch('http://localhost:8080/users',{
+    const respense = await fetch('http://localhost:8080/auth/signup',{
       method:'POST',
       body: JSON.stringify(userData),
       headers:{'content-type': 'application/json'}
@@ -14,23 +14,24 @@ export function createUser(userData) {
 
 export function checkUser(loginInfo) {
   return new Promise(async(resolve,reject) =>{
-    const email = loginInfo.email;
-    const password= loginInfo.password
-    const respense = await fetch('http://localhost:8080/users?email='+email)
-    const data = await respense.json();
-    if(data.length){
-      if(password===data[0].password)
-      resolve({data:data[0]})
-      else{
-        reject({message:'user not found'})
-      }
-    }
-    else{
+    try {
+      const respense = await fetch('http://localhost:8080/auth//login',{
+        method: 'POST',
+        body : JSON.stringify(loginInfo),
+        headers:{'content-type': 'application/json'}
+      })
+     if(respense.ok){
+      const data = await respense.json();
+       resolve({data})
+     }
+     else{
+      const err = await respense.json();
+      reject({err})
+     }
+    
+    } catch (error) { 
       reject({message:'user not found'})
-    }
-    resolve({data});
-  }
-  );
+    }});
 }
 
 export function signOut(userId) {

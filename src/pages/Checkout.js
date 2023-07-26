@@ -12,7 +12,7 @@ function Checkout() {
   const user = useSelector(selectUserInfo);
   const orderPlace = useSelector(currentOrder);
   const dispatch = useDispatch()
-  const totalAmount = items.reduce((amount,item)=>discountedPrice(item)*item.quantity+amount,0)
+  const totalAmount = items.reduce((amount,item)=>discountedPrice(item.product)*item.quantity+amount,0)
   const totalItems = items.reduce((total,item)=>item.quantity +total,0);
   const { register, handleSubmit,reset } = useForm();
 
@@ -21,7 +21,7 @@ function Checkout() {
 
 
   const handleQuantity = (e,item)=>{
-    dispatch(updateCartAsync({...item,quantity:+e.target.value}));
+    dispatch(updateCartAsync({id:item.id,quantity:+e.target.value}));
   }
   const handleRemove = (e,id)=>{
     dispatch(deleteItemFromCartAsync(id))
@@ -33,7 +33,7 @@ function Checkout() {
     setPaymentMethod(e.target.value);
   }
   const handleOrder = ()=>{
-    if(selectedAddress){const order ={items, totalAmount, totalItems,user:{username:user.username,email:user.email,id:user.id},paymentMethod, selectedAddress, status:'pending'}
+    if(selectedAddress){const order ={items, totalAmount, totalItems,user:user.id,paymentMethod, selectedAddress, status:'pending'}
     dispatch(addOrderAsync(order));
   }
     else{
@@ -220,7 +220,7 @@ function Checkout() {
                       >
                         <div className="flex gap-x-4">
                           <input
-                          onChange={e=>handleAddress(e)}
+                          onChange={handleAddress}
                             id="address"
                             name="address"
                             type="radio"
@@ -313,12 +313,12 @@ function Checkout() {
         <div className="border-t border-gray-200 px-0 py-6 sm:px-0">
           <div className="flow-root">
             <ul  className="-my-6 divide-y divide-gray-200">
-              {items.map((product) => (
-                <li key={product.id} className="flex py-6">
+              {items.map((item) => (
+                <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      src={product.thumbnail}
-                      alt={product.title}
+                      src={item.product.thumbnail}
+                      alt={item.product.title}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -327,12 +327,12 @@ function Checkout() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                          <a href={product.href}>{product.title}</a>
+                          <a href={item.product.href}>{item.product.title}</a>
                         </h3>
-                        <p className="ml-4">${discountedPrice(product)}</p>
+                        <p className="ml-4">${discountedPrice(item.product)}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500 text-left">
-                        {product.brand}
+                        {item.product.brand}
                       </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -343,7 +343,7 @@ function Checkout() {
                         >
                           Qty
                         </label>
-                        <select onChange={e=>handleQuantity(e,product)} value={product.quantity} >
+                        <select onChange={e=>handleQuantity(e,item)} value={item.quantity} >
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -355,7 +355,7 @@ function Checkout() {
 
                       <div className="flex">
                         <button
-                        onClick={e=>handleRemove(e,product.id)}
+                        onClick={e=>handleRemove(e,item.product.id)}
                           type="button"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >

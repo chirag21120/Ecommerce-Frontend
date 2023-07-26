@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../cart/cartSlice";
-import { selectLoggedInUser } from "../auth/authSlice";
+import { selectUserInfo } from "../user/userSlice";
 
 const imageUrl ="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 const navigation = [
@@ -27,7 +27,7 @@ function classNames(...classes) {
 }
 function Navbar({ children }) {
   const items = useSelector(selectCartItems);
-  const user = useSelector(selectLoggedInUser)
+  const user = useSelector(selectUserInfo)
   return (
     <>
       <div className="min-h-full">
@@ -176,7 +176,7 @@ function Navbar({ children }) {
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">
-                        {user.name}
+                        {user.username}
                       </div>
                       <div className="text-sm font-medium leading-none text-gray-400">
                         {user.email}

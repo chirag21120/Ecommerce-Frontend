@@ -35,12 +35,12 @@ export default function UserOrder() {
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
               <div className="flow-root">
                 <ul className="-my-6 divide-y divide-gray-200">
-                  {order.items.map((product) => (
-                    <li key={product.id} className="flex py-6">
+                  {order.items.map((item) => (
+                    <li key={item.product.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
-                          src={product.thumbnail}
-                          alt={product.title}
+                          src={item.product.thumbnail}
+                          alt={item.product.title}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -49,12 +49,12 @@ export default function UserOrder() {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href={product.href}>{product.title}</a>
+                              <a href={item.product.href}>{item.product.title}</a>
                             </h3>
-                            <p className="ml-4">${discountedPrice(product)}</p>
+                            <p className="ml-4">${discountedPrice(item.product)}</p>
                           </div>
                           <p className="mt-1 text-sm text-left text-gray-500">
-                            {product.brand}
+                            {item.product.brand}
                           </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
@@ -63,7 +63,7 @@ export default function UserOrder() {
                               htmlFor="quantity"
                               className="inline mr-3 text-sm font-medium leading-6 text-gray-900"
                             >
-                              Qty: {product.quantity}
+                              Qty: {item.quantity}
                             </label>
                           </div>
                         </div>

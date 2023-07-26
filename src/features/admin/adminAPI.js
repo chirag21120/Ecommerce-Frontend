@@ -42,7 +42,7 @@ export function fetchAdminProductsByFilters(filter,sort,pagination,admin) {
   }
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch(`http://localhost:8080/products?admin=${admin}&`+queryString)
+    const respense = await fetch(`http://localhost:8080/products/admin?admin=${admin}&`+queryString)
     const data = await respense.json();
     const totalItems = await respense.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:totalItems}});
