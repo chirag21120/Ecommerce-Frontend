@@ -71,7 +71,6 @@ function ProductForm() {
             product.image4,
           ];
           product.rating = 4.3;
-          product.admin = user.id;
           delete product["image1"];
           delete product["image2"];
           delete product["image3"];

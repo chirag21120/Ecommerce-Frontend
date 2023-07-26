@@ -9,7 +9,7 @@ import Checkout from "./pages/Checkout";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import Protected from "./features/auth/components/Protected";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "./features/auth/authSlice";
+import { checkAuthAsync, selectLoggedInUser } from "./features/auth/authSlice";
 import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
 import NotFound from "./pages/404";
 import OrderSuccess from "./pages/OrderSuccess";
@@ -156,6 +156,10 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
+  useEffect(()=>{
+    dispatch(checkAuthAsync())
+    
+  },[dispatch])
   useEffect(() => {
     if (user) {
       //we can get user by token on backend so no need to give in front-end

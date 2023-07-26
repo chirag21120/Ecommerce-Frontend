@@ -12,14 +12,32 @@ export function createUser(userData) {
   );
 }
 
-export function checkUser(loginInfo) {
+export function loginUser(loginInfo) {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('http://localhost:8080/auth//login',{
+      const respense = await fetch('http://localhost:8080/auth/login',{
         method: 'POST',
         body : JSON.stringify(loginInfo),
         headers:{'content-type': 'application/json'}
       })
+     if(respense.ok){
+      const data = await respense.json();
+       resolve({data})
+     }
+     else{
+      const err = await respense.json();
+      reject({err})
+     }
+    
+    } catch (error) { 
+      reject({message:'user not found'})
+    }});
+}
+
+export function checkAuth() {
+  return new Promise(async(resolve,reject) =>{
+    try {
+      const respense = await fetch('http://localhost:8080/auth/check')
      if(respense.ok){
       const data = await respense.json();
        resolve({data})

@@ -30,7 +30,7 @@ function Navbar({ children }) {
   const user = useSelector(selectUserInfo)
   return (
     <>
-      <div className="min-h-full">
+      {user && <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <>
@@ -232,7 +232,7 @@ function Navbar({ children }) {
             {children}
           </div>
         </main>
-      </div>
+      </div>}
     </>
   );
 }

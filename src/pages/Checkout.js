@@ -213,7 +213,7 @@ function Checkout() {
                     Choose from existing address
                   </p>
                   <ul >
-                    {user.addresses.map((address,index) => (
+                    {user.addresses && user.addresses.map((address,index) => (
                       <li
                         key={index}
                         className="flex justify-between gap-x-6 px-5 py-5 my-2 rounded-lg border-solid border-2 border-gray-300"
@@ -313,7 +313,7 @@ function Checkout() {
         <div className="border-t border-gray-200 px-0 py-6 sm:px-0">
           <div className="flow-root">
             <ul  className="-my-6 divide-y divide-gray-200">
-              {items.map((item) => (
+              {items && items.map((item) => (
                 <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img

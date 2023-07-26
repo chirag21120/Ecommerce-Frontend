@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { checkUser, createUser, signOut } from './authAPI';
+import { loginUser, createUser, signOut, checkAuth } from './authAPI';
 
 const initialState = {
   loggedInUserToken: null,
@@ -17,11 +17,11 @@ export const createUserAsync = createAsyncThunk(
   }
 );
 
-export const checkUserAsync = createAsyncThunk(
-  'user/checkUser',
+export const loginUserAsync = createAsyncThunk(
+  'user/loginUser',
   async (userData,{rejectWithValue}) => {
     try {
-      const response = await checkUser(userData);
+      const response = await loginUser(userData);
       // The value we return becomes the `fulfilled` action payload
       return response.data;
     } catch (error) {
@@ -30,6 +30,20 @@ export const checkUserAsync = createAsyncThunk(
     }
   }
 );
+
+export const checkAuthAsync = createAsyncThunk(
+  'user/checkAuthr',
+  async () => {
+    try {
+      const response = await checkAuth();
+      // The value we return becomes the `fulfilled` action payload
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const signOutAsync = createAsyncThunk(
   'user/signOut',
   async (userId) => {
@@ -60,10 +74,15 @@ export const authSlice = createSlice({
         state.status = 'idle';
         state.loggedInUserToken = action.payload;
       })
-      .addCase(checkUserAsync.pending, (state) => {
+      .addCase(loginUserAsync.rejected, (state, action) => {
+        state.status = 'idle';
+        state.errors = action.payload;
+        state.loggedInUserToken= null;
+      })
+      .addCase(loginUserAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(checkUserAsync.fulfilled, (state, action) => {
+      .addCase(loginUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.loggedInUserToken = action.payload;
         state.errors = null;
@@ -76,10 +95,13 @@ export const authSlice = createSlice({
         state.loggedInUserToken = null;
         state.errors = null;
       })
-      .addCase(checkUserAsync.rejected, (state, action) => {
+      .addCase(checkAuthAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(checkAuthAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.errors = action.payload;
-        state.loggedInUserToken= null;
+        state.loggedInUserToken = action.payload;
+        state.errors = null;
       });
   },
 });
