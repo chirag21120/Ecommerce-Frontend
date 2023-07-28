@@ -7,21 +7,6 @@ import { fetchProductsByIdAsync, selectedProduct } from '../../product-list/Prod
 import { useParams } from 'react-router-dom';
 import { addToCartAsync } from '../../cart/cartSlice';
 
-const colors= [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  ];
- const sizes= [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true },
-  ];
 
 const highlights = [
     'Hand cut and sewn locally',
@@ -34,8 +19,8 @@ function classNames(...classes) {
 }
 
 export default function AdminProductDetails() {
-  const [selectedColor, setSelectedColor] = useState(colors[0])
-  const [selectedSize, setSelectedSize] = useState(sizes[2])
+  const [selectedColor, setSelectedColor] = useState(null)
+  const [selectedSize, setSelectedSize] = useState(null)
   const product = useSelector(selectedProduct);
   const dispatch = useDispatch();
   const params = useParams();
@@ -149,13 +134,13 @@ export default function AdminProductDetails() {
 
             <form className="mt-10">
               {/* Colors */}
-              <div>
+              {product.colors && product.colors.length && <div>
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                 <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
                   <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
                   <div className="flex items-center space-x-3">
-                    {colors && colors.map((color) => (
+                    {product.colors.map((color) => (
                       <RadioGroup.Option
                         key={color.name}
                         value={color}
@@ -182,10 +167,10 @@ export default function AdminProductDetails() {
                     ))}
                   </div>
                 </RadioGroup>
-              </div>
+              </div>}
 
               {/* Sizes */}
-              <div className="mt-10">
+              {product.sizes && product.sizes.length && <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">Size</h3>
                   <div className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
@@ -196,7 +181,7 @@ export default function AdminProductDetails() {
                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                   <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
                   <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                    {sizes && sizes.map((size) => (
+                    {product.sizes.map((size) => (
                       <RadioGroup.Option
                         key={size.name}
                         value={size}
@@ -244,7 +229,7 @@ export default function AdminProductDetails() {
                     ))}
                   </div>
                 </RadioGroup>
-              </div>
+              </div>}
 
               <button
               onClick={e=>handleCart(e)}

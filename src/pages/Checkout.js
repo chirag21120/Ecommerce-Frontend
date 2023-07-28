@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { deleteItemFromCartAsync, selectCartItems, updateCartAsync } from "../features/cart/cartSlice";
 import { useForm } from "react-hook-form";
-import { addOrderAsync, currentOrder} from "../features/order/orderSlice";
+import { addOrderAsync, selectCurrentOrder} from "../features/order/orderSlice";
 import { selectUserInfo, updateUserAsync } from "../features/user/userSlice";
 import { discountedPrice } from "../app/constants";
 
 function Checkout() {
   const items = useSelector(selectCartItems);
   const user = useSelector(selectUserInfo);
-  const orderPlace = useSelector(currentOrder);
+  const orderPlace = useSelector(selectCurrentOrder);
   const dispatch = useDispatch()
-  const totalAmount = items.reduce((amount,item)=>discountedPrice(item.product)*item.quantity+amount,0)
+  const totalAmount = items.reduce((amount,item)=>(item.product.discountedPrice)*item.quantity+amount,0)
   const totalItems = items.reduce((total,item)=>item.quantity +total,0);
   const { register, handleSubmit,reset } = useForm();
 
@@ -43,8 +43,11 @@ function Checkout() {
 
   return (
     <>
+    
     {!items.length && <Navigate to='/' replace={true}></Navigate>}
-    {orderPlace && <Navigate to={`/order-success/${orderPlace.id}` }replace={true}></Navigate>}
+    {orderPlace && orderPlace.paymentMethod==='cash' && <Navigate to={`/order-success/${orderPlace.id}` }replace={true}></Navigate>}
+
+    {orderPlace && orderPlace.paymentMethod==='card' && <Navigate to={`/stripe-checkout` }replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -329,7 +332,7 @@ function Checkout() {
                         <h3>
                           <a href={item.product.href}>{item.product.title}</a>
                         </h3>
-                        <p className="ml-4">${discountedPrice(item.product)}</p>
+                        <p className="ml-4">${(item.product.discountedPrice)}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500 text-left">
                         {item.product.brand}

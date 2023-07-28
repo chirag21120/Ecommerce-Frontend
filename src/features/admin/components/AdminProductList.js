@@ -19,15 +19,15 @@ import {
   selectBrands,
   selectCategories,
 } from "../../product-list/ProductSlice";
-import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
+import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { fetchAdminProductsByFiltersAsync, selectAdminStatus, selectAllProducts, selectTotalItems } from "../adminSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { BallTriangle } from "react-loader-spinner";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
-  { name: "Price: Low to High", sort: "price", order: "asc", current: false },
-  { name: "Price: High to Low", sort: "price", order: "desc", current: false },
+  { name: "Price: Low to High", sort: "discountedPrice", order: "asc", current: false },
+  { name: "Price: High to Low", sort: "discountedPrice", order: "desc", current: false },
 ];
 
 function classNames(...classes) {
@@ -416,10 +416,11 @@ function ProductGrid({ products,status }) {
       /></div>:null}
           {status==='idle'&&products &&
             products.map((product) => (
-              <div>
+              <div 
+              key={product.id}
+              >
               <Link to={`/product-detail/${product.id}`}>
                 <div
-                  key={product.id}
                   className="group relative border-solid border-2 p-2 border-gray-200"
                 >
                   <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
@@ -451,7 +452,7 @@ function ProductGrid({ products,status }) {
                     <div>
                       <p className="text-sm block  font-medium text-gray-900">
                         ${" "}
-                        {discountedPrice(product)}
+                        {product.discountedPrice}
                       </p>
                       <p className="text-sm block line-through font-medium text-gray-400">
                         $ {product.price}
@@ -540,6 +541,7 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
             {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
             {Array.from({ length: totalPages }).map((el, index) => (
               <div
+              key={index+1}
                 onClick={(el) => handlePage(index + 1)}
                 aria-current="page"
                 className={`relative z-10 cursor-pointer inline-flex items-center ${

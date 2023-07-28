@@ -2,16 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { addToCart, deleteItemFromCart, fetchItemsByUserId, resetCart, updateCart } from './cartAPI';
 
 const initialState = {
-  value: 0,
   status: 'idle',
-  items :[]
+  items :[],
+  cartLoaded: false
 };
 
 
 export const addToCartAsync = createAsyncThunk(
   'cart/addToCart',
-  async (item) => {
+  async ({item,alert}) => {
     const response = await addToCart(item);
+    alert.success("Item Added To Cart")
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -80,6 +81,11 @@ export const cartSlice = createSlice({
       .addCase(fetchItemsByUserIdAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.items = (action.payload);
+        state.cartLoaded = true
+      })
+      .addCase(fetchItemsByUserIdAsync.rejected, (state) => {
+        state.status = 'idle';
+        state.cartLoaded = true
       })
       .addCase(updateCartAsync.pending, (state) => {
         state.status = 'loading';
@@ -111,5 +117,6 @@ export const { increment, decrement, incrementByAmount } = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
 export const selectCartStatus = (state) => state.cart.status;
+export const selectCartLoaded = (state) => state.cart.cartLoaded;
 
 export default cartSlice.reducer;

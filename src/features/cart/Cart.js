@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   deleteItemFromCartAsync,
   selectCartItems,
+  selectCartLoaded,
   selectCartStatus,
   updateCartAsync,
 } from "./cartSlice";
-import { discountedPrice } from "../../app/constants";
 import { BallTriangle } from "react-loader-spinner";
 import Modal from "../common/Modal";
 
@@ -16,8 +16,9 @@ export default function Cart() {
   const items = useSelector(selectCartItems);
   const [openModal, setOpenModal] = useState(-1)
   const dispatch = useDispatch();
+  const cartLoaded = useSelector(selectCartLoaded);
   const totalAmount = items.reduce(
-    (amount, item) => discountedPrice(item.product) * item.quantity + amount,
+    (amount, item) => item.product.discountedPrice * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
@@ -31,6 +32,7 @@ export default function Cart() {
 
   return (
     <>
+    {/* {!items.length && cartLoaded &&<Navigate to='/' replace={true}></Navigate>} */}
       <div className="mx-auto mt-10 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex py-4">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
@@ -72,7 +74,7 @@ export default function Cart() {
                           <h3>
                             <a href={item.product.href}>{item.product.title}</a>
                           </h3>
-                          <p className="ml-4">${discountedPrice(item.product)}</p>
+                          <p className="ml-4">${item.product.discountedPrice}</p>
                         </div>
                         <p className="mt-1 text-sm text-left text-gray-500">
                           {item.product.brand}
