@@ -25,6 +25,7 @@ import { selectLoggedInUser } from "../../auth/authSlice";
 import { BallTriangle } from "react-loader-spinner";
 
 const sortOptions = [
+  { name: "None", sort: "none", order: "", current: false },
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
   { name: "Price: Low to High", sort: "discountedPrice", order: "asc", current: false },
   { name: "Price: High to Low", sort: "discountedPrice", order: "desc", current: false },
@@ -73,9 +74,12 @@ export default function AdminProductList() {
   };
 
   const handleSort = (option) => {
-    const newSort = { _sort: option.sort, _order: option.order };
-    setSort(newSort);
-    // dispatch(fetchProductsByFiltersAsync(newfilter));
+    if(option.sort!=='none'){
+      const newSort = { _sort: option.sort, _order: option.order };
+      setSort(newSort);}
+      else{
+        setSort({});
+      }
   };
 
   const handlePage = (page) => {

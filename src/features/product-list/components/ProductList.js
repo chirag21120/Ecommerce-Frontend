@@ -27,6 +27,7 @@ import { Pagination } from "../../common/Pagination";
 import { BallTriangle } from  'react-loader-spinner'
 
 const sortOptions = [
+  { name: "None", sort: "none", order: "", current: false },
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
   { name: "Price: Low to High", sort: "discountedPrice", order: "asc", current: false },
   { name: "Price: High to Low", sort: "discountedPrice", order: "desc", current: false },
@@ -75,8 +76,12 @@ export default function ProductList() {
   };
 
   const handleSort = (option) => {
+    if(option.sort!=='none'){
     const newSort = { _sort: option.sort, _order: option.order };
-    setSort(newSort);
+    setSort(newSort);}
+    else{
+      setSort({});
+    }
     // dispatch(fetchProductsByFiltersAsync(newfilter));
   };
 
