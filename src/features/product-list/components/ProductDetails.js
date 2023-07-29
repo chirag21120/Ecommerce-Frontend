@@ -35,8 +35,15 @@ export default function ProductDetails() {
   
   const handleCart =(e)=>{
     e.preventDefault()
-    if(items.findIndex(item=>item.product.id===product.id)<0)
-    {const newItem = {product:product.id,quantity:1};
+    if(items.findIndex(item=>item.product.id===product.id)<0){
+    if(product.colors && product.colors.length && !selectedColor){
+      alert.error('Please Select Color');
+    }
+    else if(product.sizes && product.sizes.length && !selectedSize)
+      alert.error('Please Select Size');
+
+    else{
+    const newItem = {product:product.id,quantity:1};
     if(selectedColor){
       newItem.color = selectedColor;
     }
@@ -45,6 +52,7 @@ export default function ProductDetails() {
     }
     dispatch(addToCartAsync({item:newItem,alert}));
   }
+}
     else{
       alert.error('Item Already in Cart')
     }
