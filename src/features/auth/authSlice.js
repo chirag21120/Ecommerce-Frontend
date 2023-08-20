@@ -13,10 +13,14 @@ const initialState = {
 
 export const createUserAsync = createAsyncThunk(
   'user/createUser',
-  async (userData) => {
-    const response = await createUser(userData);
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
+  async (userData,{rejectWithValue}) => {
+    try {
+      const response = await createUser(userData);
+      // The value we return becomes the `fulfilled` action payload
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
@@ -100,10 +104,15 @@ export const authSlice = createSlice({
     builder
       .addCase(createUserAsync.pending, (state) => {
         state.status = 'loading';
+        state.errors = null;
       })
       .addCase(createUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.loggedInUserToken = action.payload;
+      })
+      .addCase(createUserAsync.rejected, (state, action) => {
+        state.status = 'idle';
+        state.errors = action.payload;
       })
       .addCase(loginUserAsync.rejected, (state, action) => {
         state.status = 'idle';
@@ -111,6 +120,7 @@ export const authSlice = createSlice({
         state.loggedInUserToken= null;
       })
       .addCase(loginUserAsync.pending, (state) => {
+        state.errors = null;
         state.status = 'loading';
       })
       .addCase(loginUserAsync.fulfilled, (state, action) => {
@@ -128,6 +138,7 @@ export const authSlice = createSlice({
       })
       .addCase(checkAuthAsync.pending, (state) => {
         state.status = 'loading';
+        state.errors = null;
       })
       .addCase(checkAuthAsync.fulfilled, (state, action) => {
         state.status = 'idle';
@@ -138,17 +149,23 @@ export const authSlice = createSlice({
       .addCase(checkAuthAsync.rejected, (state, action) => {
         state.status = 'idle';
         state.userChecked = true;
-        // state.errors = action.payload;
+        state.errors = action.payload;
       })
       .addCase(resetPasswordRequestAsync.pending, (state) => {
         state.status = 'loading';
+        state.errors = null;
       })
       .addCase(resetPasswordRequestAsync.fulfilled, (state) => {
         state.status = 'idle';
         state.mailSent = true;
       })
+      .addCase(resetPasswordRequestAsync.rejected, (state,action) => {
+        state.status = 'idle';
+        state.errors = action.payload;
+      })
       .addCase(resetPasswordAsync.pending, (state) => {
         state.status = 'loading';
+        state.errors = null;
       })
       .addCase(resetPasswordAsync.fulfilled, (state) => {
         state.status = 'idle';
@@ -157,7 +174,7 @@ export const authSlice = createSlice({
       .addCase(resetPasswordAsync.rejected, (state,action) => {
         state.status = 'idle';
         state.passwordReset = false;
-        state.error = action.payload;
+        state.errors = action.payload;
       });;
   },
 });
@@ -165,6 +182,7 @@ export const authSlice = createSlice({
 export const { increment } = authSlice.actions;
 export const selectLoggedInUser = (state)=>state.auth.loggedInUserToken;
 export const selectErrors = (state)=>state.auth.errors;
+export const selectStatus = (state)=>state.auth.status;
 export const selectCheckedUser = (state)=>state.auth.userChecked;
 export const selectMailSent = (state)=>state.auth.mailSent;
 export const selectPasswordReset = (state)=>state.auth.passwordReset;

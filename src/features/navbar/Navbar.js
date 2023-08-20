@@ -149,20 +149,20 @@ function Navbar({ children }) {
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                   {navigation.map((item) => (
-                    <Disclosure.Button
+                    item[user.role]?<Link
                       key={item.name}
-                      as="a"
-                      href={item.href}
+                      // as="a"
+                      to={item.href}
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "block rounded-md px-3 py-2 text-base font-medium"
+                        "block rounded-md px-3 py-2 text-base text-left font-medium"
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
-                    </Disclosure.Button>
+                    </Link>: null
                   ))}
                 </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
@@ -178,9 +178,9 @@ function Navbar({ children }) {
                       <div className="text-base font-medium leading-none text-white">
                         {user.username}
                       </div>
-                      <div className="text-sm font-medium leading-none text-gray-400">
+                      {/* <div className="text-sm font-medium leading-none text-gray-400">
                         {user.email}
-                      </div>
+                      </div> */}
                     </div>
                     <Link to='/my-cart'>
                     <button

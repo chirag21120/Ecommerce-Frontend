@@ -1,13 +1,22 @@
 // A mock function to mimic making an async request for data
 export function createUser(userData) {
-  return new Promise(async(resolve) =>{
-    const respense = await fetch('/auth/signup',{
-      method:'POST',
-      body: JSON.stringify(userData),
-      headers:{'content-type': 'application/json'}
-    })
-    const data = await respense.json();
-    resolve({data});
+  return new Promise(async(resolve,reject) =>{
+    try {
+      const respense = await fetch('/auth/signup',{
+        method:'POST',
+        body: JSON.stringify(userData),
+        headers:{'content-type': 'application/json'}
+      })
+      if(respense.ok){
+        const data = await respense.json();
+        resolve({data});
+      }else{
+        const err = await respense.json();
+        reject({err});
+      }
+    } catch (error) {
+      reject({message:"User with this email already exists"});
+    }
   }
   );
 }
