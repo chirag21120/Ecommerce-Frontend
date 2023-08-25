@@ -174,7 +174,7 @@ export default function Signup() {
                   <svg
                     aria-hidden="true"
                     role="status"
-                    class="inline w-4 h-4 mr-3 text-white animate-spin"
+                    className="inline w-4 h-4 mr-3 text-white animate-spin"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

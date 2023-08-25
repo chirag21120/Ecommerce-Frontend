@@ -47,10 +47,12 @@ export function deleteItemFromCart(itemId) {
 }
 
 export async function resetCart() {
- return new  Promise (async(resolve)=>{const response = await fetchItemsByUserId();
+ return new  Promise (async(resolve)=>{
+ const response = await fetchItemsByUserId();
  const items =  response.data;
  for(let item of items){
   await deleteItemFromCart(item.id);
+  console.log("deleted "+item.id);
  }
  resolve({status:'success'});
  }

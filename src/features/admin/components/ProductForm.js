@@ -92,7 +92,8 @@ function ProductForm() {
       <form
         noValidate
         onSubmit={handleSubmit((data) => {
-          const product = { ...data };
+          const dP = Math.round(data.price*(1-data.discountPercentage/100))
+          const product = { ...data,discountedPrice : dP};
           product.images = [
             product.image1,
             product.image2,
@@ -106,8 +107,8 @@ function ProductForm() {
             product.highlight4,
           ];
           product.rating = 4.3;
-          product.colors = product.colors.map(color=>colors.find(clr=>clr.id==color));
-          product.sizes = product.sizes.map(size=>sizes.find(clr=>clr.id==size));
+          product.colors = product.colors.map(color=>colors.find(clr=>clr.id===color));
+          product.sizes = product.sizes.map(size=>sizes.find(clr=>clr.id===size));
           delete product["image1"];
           delete product["image2"];
           delete product["image3"];
@@ -119,6 +120,7 @@ function ProductForm() {
           product.price = +product.price;
           product.discountPercentage = +product.discountPercentage;
           product.stock = +product.stock;
+          product.discountedPrice = +product.discountedPrice;
           // handleAdd(data);
           if (params.id) {
             product.id = params.id;
