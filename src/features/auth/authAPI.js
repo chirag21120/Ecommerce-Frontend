@@ -2,7 +2,7 @@
 export function createUser(userData) {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('/auth/signup',{
+      const respense = await fetch('http://localhost:8080/auth/signup',{
         method:'POST',
         body: JSON.stringify(userData),
         headers:{'content-type': 'application/json'}
@@ -24,7 +24,7 @@ export function createUser(userData) {
 export function loginUser(loginInfo) {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('/auth/login',{
+      const respense = await fetch('http://localhost:8080/auth/login',{
         method: 'POST',
         body : JSON.stringify(loginInfo),
         headers:{'content-type': 'application/json'}
@@ -46,7 +46,7 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('/auth/check')
+      const respense = await fetch('http://localhost:8080/auth/check')
      if(respense.ok){
       const data = await respense.json();
        resolve({data})
@@ -64,7 +64,7 @@ export function checkAuth() {
 export function signOut() {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('/auth/logout')
+      const respense = await fetch('http://localhost:8080/auth/logout')
      if(respense.ok){ 
        resolve({data:"success"})
      }
@@ -103,7 +103,7 @@ export function resetPasswordRequest(email) {
 export function resetPassword(data) {
   return new Promise(async(resolve,reject) =>{
    try {
-      const respense = await fetch('/auth/reset-password',{
+      const respense = await fetch('http://localhost:8080/auth/reset-password',{
         method:'POST',
         body: JSON.stringify(data),
         headers:{'content-type': 'application/json'}

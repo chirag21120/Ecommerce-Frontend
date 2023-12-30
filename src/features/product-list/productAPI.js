@@ -2,7 +2,7 @@
 export function fetchAllProducts() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products')
+    const respense = await fetch('http://localhost:8080/products')
     const data = await respense.json();
     resolve({data});
   }
@@ -29,7 +29,7 @@ export function fetchProductsByFilters(filter,sort,pagination) {
   }
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products?'+queryString)
+    const respense = await fetch('http://localhost:8080/products?'+queryString)
     const data = await respense.json();
     const totalItems = await respense.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:totalItems}});
@@ -40,7 +40,7 @@ export function fetchProductsByFilters(filter,sort,pagination) {
 export function fetchCategory() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/category')
+    const respense = await fetch('http://localhost:8080/category')
     const data = await respense.json();
     resolve({data});
   }
@@ -50,7 +50,7 @@ export function fetchCategory() {
 export function fetchBrands() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/brands')
+    const respense = await fetch('http://localhost:8080/brands')
     const data = await respense.json();
     resolve({data});
   }
@@ -60,7 +60,7 @@ export function fetchBrands() {
 export function fetchProductById(id) {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products/'+id)
+    const respense = await fetch('http://localhost:8080/products/'+id)
     const data = await respense.json();
     resolve({data});
   }

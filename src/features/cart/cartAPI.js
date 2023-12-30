@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 export function addToCart(item) {
   return new Promise(async(resolve) =>{
-    const respense = await fetch('/cart',{
+    const respense = await fetch('http://localhost:8080/cart',{
       method:'POST',
       body: JSON.stringify(item),
       headers:{'content-type': 'application/json'}
@@ -14,7 +14,7 @@ export function addToCart(item) {
 
 export function fetchItemsByUserId() {
   return new Promise(async(resolve) =>{
-    const respense = await fetch('/cart')
+    const respense = await fetch('http://localhost:8080/cart')
     const data = await respense.json();
     resolve({data});
   }

@@ -2,7 +2,7 @@
 export function fetchAllAdminProducts() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products')
+    const respense = await fetch('http://localhost:8080/products')
     const data = await respense.json();
     resolve({data});
   }
@@ -11,7 +11,7 @@ export function fetchAllAdminProducts() {
 export function createProduct(product) {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products/',{
+    const respense = await fetch('http://localhost:8080/products/',{
       method:'POST',
       body: JSON.stringify(product),
       headers: {'content-type':'application/json'}
@@ -41,7 +41,7 @@ export function fetchAdminProductsByFilters(filter,sort,pagination) {
   }
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch(`/products/admin?`+queryString)
+    const respense = await fetch(`http://localhost:8080/products/admin?`+queryString)
     const data = await respense.json();
     const totalItems = await respense.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:totalItems}});
@@ -52,7 +52,7 @@ export function fetchAdminProductsByFilters(filter,sort,pagination) {
 export function fetchProductById(id) {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('/products/'+id)
+    const respense = await fetch('http://localhost:8080/products/'+id)
     const data = await respense.json();
     resolve({data});
   }
@@ -61,7 +61,7 @@ export function fetchProductById(id) {
 
 export function updateProduct(update) {
   return new Promise(async(resolve) =>{
-    const respense = await fetch('/products/'+update.id,{
+    const respense = await fetch('http://localhost:8080/products/'+update.id,{
       method:'PATCH',
       body: JSON.stringify(update),
       headers:{'content-type': 'application/json'}
