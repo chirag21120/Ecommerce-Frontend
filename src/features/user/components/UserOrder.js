@@ -35,11 +35,11 @@ export default function UserOrder() {
               <div className="flow-root">
                 <ul className="-my-6 divide-y divide-gray-200">
                   {order.items.map((item) => (
-                    <li key={item.product.id} className="flex py-6">
+                    <li key={item.Product.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
-                          src={item.product.thumbnail}
-                          alt={item.product.title}
+                          src={item.Product.thumbnail}
+                          alt={item.Product.title}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -48,12 +48,12 @@ export default function UserOrder() {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href={item.product.href}>{item.product.title}</a>
+                              <a href={item.Product.href}>{item.Product.title}</a>
                             </h3>
-                            <p className="ml-4">${item.product.discountedPrice}</p>
+                            <p className="ml-4">${item.Product.discountedPrice}</p>
                           </div>
                           <p className="mt-1 text-sm text-left text-gray-500">
-                            {item.product.brand}
+                            {item.Product.brand}
                           </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">

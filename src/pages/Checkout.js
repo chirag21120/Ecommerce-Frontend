@@ -12,7 +12,7 @@ function Checkout() {
   const user = useSelector(selectUserInfo);
   const orderPlace = useSelector(selectCurrentOrder);
   const dispatch = useDispatch()
-  const totalAmount = items.reduce((amount,item)=>(item.product.discountedPrice)*item.quantity+amount,0)
+  const totalAmount = items.reduce((amount,item)=>(item.Product.discountedPrice)*item.quantity+amount,0)
   const totalItems = items.reduce((total,item)=>item.quantity +total,0);
   const { register, handleSubmit,reset } = useForm();
 
@@ -320,8 +320,8 @@ function Checkout() {
                 <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      src={item.product.thumbnail}
-                      alt={item.product.title}
+                      src={item.Product.thumbnail}
+                      alt={item.Product.title}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -330,12 +330,12 @@ function Checkout() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                          <a href={item.product.href}>{item.product.title}</a>
+                          <a href={item.Product.href}>{item.Product.title}</a>
                         </h3>
-                        <p className="ml-4">${(item.product.discountedPrice)}</p>
+                        <p className="ml-4">${(item.Product.discountedPrice)}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500 text-left">
-                        {item.product.brand}
+                        {item.Product.brand}
                       </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -358,7 +358,7 @@ function Checkout() {
 
                       <div className="flex">
                         <button
-                        onClick={e=>handleRemove(e,item.product.id)}
+                        onClick={e=>handleRemove(e,item.Product.id)}
                           type="button"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >

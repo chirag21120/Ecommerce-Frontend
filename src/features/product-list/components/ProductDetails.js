@@ -35,7 +35,7 @@ export default function ProductDetails() {
   
   const handleCart =(e)=>{
     e.preventDefault()
-    if(items.findIndex(item=>item.product.id===product.id)<0){
+    if(items.findIndex(item=>item.Product.id===product.id)<0){
     if(product.colors && product.colors.length && !selectedColor){
       alert.error('Please Select Color');
     }
@@ -43,7 +43,7 @@ export default function ProductDetails() {
       alert.error('Please Select Size');
 
     else{
-    const newItem = {product:product.id,quantity:1};
+    const newItem = {product_id:product.id,quantity:1};
     if(selectedColor){
       newItem.color = selectedColor;
     }
