@@ -2,7 +2,11 @@
 export function fetchAllAdminProducts() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/products')
+    const respense = await fetch('http://localhost:8080/products', {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
@@ -14,7 +18,8 @@ export function createProduct(product) {
     const respense = await fetch('http://localhost:8080/products/',{
       method:'POST',
       body: JSON.stringify(product),
-      headers: {'content-type':'application/json'}
+      headers: {'content-type':'application/json'},
+      credentials: 'include',
     })
     const data = await respense.json();
     resolve({data});
@@ -41,7 +46,11 @@ export function fetchAdminProductsByFilters(filter,sort,pagination) {
   }
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch(`http://localhost:8080/products/admin?`+queryString)
+    const respense = await fetch(`http://localhost:8080/products/admin?`+queryString, {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     const totalItems = await respense.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:totalItems}});
@@ -52,7 +61,11 @@ export function fetchAdminProductsByFilters(filter,sort,pagination) {
 export function fetchProductById(id) {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/products/'+id)
+    const respense = await fetch('http://localhost:8080/products/'+id, {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
@@ -64,7 +77,8 @@ export function updateProduct(update) {
     const respense = await fetch('http://localhost:8080/products/'+update.id,{
       method:'PATCH',
       body: JSON.stringify(update),
-      headers:{'content-type': 'application/json'}
+      headers:{'content-type': 'application/json'},
+      credentials: 'include',
     })
     const data = await respense.json();
     resolve({data});

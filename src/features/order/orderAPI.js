@@ -4,7 +4,8 @@ export function addOrder(order) {
     const respense = await fetch('http://localhost:8080/orders',{
       method:'POST',
       body: JSON.stringify(order),
-      headers:{'content-type': 'application/json'}
+      headers:{'content-type': 'application/json'},
+      credentials: 'include',
     })
     const data = await respense.json();
     resolve({data});
@@ -24,7 +25,11 @@ export function fetchAllOrders(pagination,sort) {
   }
     //To-Do we will not hard code  
     // const respense = await fetch(`/orders?items.admin=${admin}&`+queryString)
-    const respense = await fetch('http://localhost:8080/orders?'+queryString)
+    const respense = await fetch('http://localhost:8080/orders?'+queryString, {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     const totalOrders = await respense.headers.get('X-Total-Count');
     resolve({data:{orders:data,totalOrders:+totalOrders}});
@@ -37,7 +42,8 @@ export function updateOrder(order) {
     const respense = await fetch('http://localhost:8080/orders/'+order.id,{
       method:'PATCH',
       body: JSON.stringify(order),
-      headers:{'content-type': 'application/json'}
+      headers:{'content-type': 'application/json'},
+      credentials: 'include',
     })
     const data = await respense.json();
     resolve({data});

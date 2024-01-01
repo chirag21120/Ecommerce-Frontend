@@ -5,7 +5,8 @@ export function createUser(userData) {
       const respense = await fetch('http://localhost:8080/auth/signup',{
         method:'POST',
         body: JSON.stringify(userData),
-        headers:{'content-type': 'application/json'}
+        headers:{'content-type': 'application/json'},
+        credentials: 'include',
       })
       if(respense.ok){
         const data = await respense.json();
@@ -27,7 +28,8 @@ export function loginUser(loginInfo) {
       const respense = await fetch('http://localhost:8080/auth/login',{
         method: 'POST',
         body : JSON.stringify(loginInfo),
-        headers:{'content-type': 'application/json'}
+        headers:{'content-type': 'application/json'},
+        credentials: 'include'
       })
      if(respense.ok){
       const data = await respense.json();
@@ -46,7 +48,11 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('http://localhost:8080/auth/check')
+      const respense = await fetch('http://localhost:8080/auth/check', {
+        method: 'GET',
+        credentials: 'include', // Important for sending cookies
+        // Other options...
+      })
      if(respense.ok){
       const data = await respense.json();
        resolve({data})
@@ -64,7 +70,11 @@ export function checkAuth() {
 export function signOut() {
   return new Promise(async(resolve,reject) =>{
     try {
-      const respense = await fetch('http://localhost:8080/auth/logout')
+      const respense = await fetch('http://localhost:8080/auth/logout', {
+        method: 'GET',
+        credentials: 'include', // Important for sending cookies
+        // Other options...
+      })
      if(respense.ok){ 
        resolve({data:"success"})
      }
@@ -84,7 +94,8 @@ export function resetPasswordRequest(email) {
       const respense = await fetch('/auth/reset-password-request',{
         method:'POST',
         body: JSON.stringify({email}),
-        headers:{'content-type': 'application/json'}
+        headers:{'content-type': 'application/json'},
+        credentials: 'include',
       })
      if(respense.ok){
       const data = await respense.json();
@@ -106,7 +117,8 @@ export function resetPassword(data) {
       const respense = await fetch('http://localhost:8080/auth/reset-password',{
         method:'POST',
         body: JSON.stringify(data),
-        headers:{'content-type': 'application/json'}
+        headers:{'content-type': 'application/json'},
+        credentials: 'include',
       })
      if(respense.ok){
       const datar = await respense.json();

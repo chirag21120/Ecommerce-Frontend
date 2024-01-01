@@ -2,7 +2,11 @@
 export function fetchAllProducts() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/products')
+    const respense = await fetch('http://localhost:8080/products', {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
@@ -29,7 +33,11 @@ export function fetchProductsByFilters(filter,sort,pagination) {
   }
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/products?'+queryString)
+    const respense = await fetch('http://localhost:8080/products?'+queryString, {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     const totalItems = await respense.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:totalItems}});
@@ -40,7 +48,11 @@ export function fetchProductsByFilters(filter,sort,pagination) {
 export function fetchCategory() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/category')
+    const respense = await fetch('http://localhost:8080/category', {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
@@ -50,7 +62,11 @@ export function fetchCategory() {
 export function fetchBrands() {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/brands')
+    const respense = await fetch('http://localhost:8080/brands', {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
@@ -60,7 +76,11 @@ export function fetchBrands() {
 export function fetchProductById(id) {
   return new  Promise(async(resolve) =>{
     //To-Do we will not hard code  
-    const respense = await fetch('http://localhost:8080/products/'+id)
+    const respense = await fetch('http://localhost:8080/products/'+id, {
+      method: 'GET',
+      credentials: 'include', // Important for sending cookies
+      // Other options...
+    })
     const data = await respense.json();
     resolve({data});
   }
