@@ -35,7 +35,7 @@ function UserProfile() {
   };
 
   const handleAdd = (address)=>{
-    const newUser = { ...user, addresses: [...user.addresses,address] }; //for shalow copy
+    const newUser = { ...user, addresses:user.addresses?[...user.addresses,address]:[address] }; //for shalow copy
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
   }

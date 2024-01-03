@@ -18,13 +18,11 @@ export default function Cart() {
   const dispatch = useDispatch();
   const cartLoaded = useSelector(selectCartLoaded);
   const totalAmount = items.reduce(
-    (amount, item) => item.Product.discountedPrice * item.quantity + amount,
-    0
-  );
+    (amount, item) =>item.Product.discountedPrice * item.quantity + amount,0);
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
   const status = useSelector(selectCartStatus);
   const handleQuantity = (e, item) => {
-    dispatch(updateCartAsync({ id:item.id, quantity: +e.target.value }));
+    dispatch(updateCartAsync({ product_id:item.product_id, quantity: +e.target.value }));
   };
   const handleRemove = (e, id) => {
     dispatch(deleteItemFromCartAsync(id));

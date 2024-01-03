@@ -167,19 +167,20 @@ function AdminOrders() {
                           </td>
                           <td className="py-3 px-0 text-left">
                             <div className="flex flex-col items-start">
-                              {order.products.map((item) => (
+                              {order.items.map((item) => (
                                 <div className="flex flex-row my-1">
+                                  {console.log(item)}
                                   <div className="mr-2">
                                     <img
                                       className="w-6 h-6 rounded-full"
-                                      src={item.thumbnail}
-                                      alt={item.title}
+                                      src={item.product.thumbnail}
+                                      alt={item.product.title}
                                     />
                                   </div>
                                   <span>
-                                    {item.title} -{" "}
+                                    {item.product.title} -{" "}
                                     {item.quantity} - $
-                                    {item.discountedPrice}
+                                    {item.product.discountedPrice}
                                   </span>
                                 </div>
                               ))}
@@ -252,12 +253,6 @@ function AdminOrders() {
                           </td>
                           <td className="py-3 px-0 text-center">
                             <div className="flex item-center justify-center">
-                              <div className="w-6 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                <EyeIcon
-                                  className="w-6 h-6"
-                                  onClick={(e) => handleShow(order)}
-                                ></EyeIcon>
-                              </div>
                               <div className="w-6 mr-2 transform hover:text-purple-500 hover:scale-110">
                                 <PencilIcon
                                   className="w-6 h-6"

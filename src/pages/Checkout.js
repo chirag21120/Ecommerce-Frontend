@@ -21,7 +21,7 @@ function Checkout() {
 
 
   const handleQuantity = (e,item)=>{
-    dispatch(updateCartAsync({id:item.id,quantity:+e.target.value}));
+    dispatch(updateCartAsync({product_id:item.product_id,quantity:+e.target.value}));
   }
   const handleRemove = (e,id)=>{
     dispatch(deleteItemFromCartAsync(id))
@@ -33,7 +33,13 @@ function Checkout() {
     setPaymentMethod(e.target.value);
   }
   const handleOrder = ()=>{
-    if(selectedAddress){const order ={items, totalAmount, totalItems,user:user.id,paymentMethod, selectedAddress, status:'pending'}
+    const itemDetails = items;
+    const item = [];
+    for(const it of items){
+      const {product_id,quantity} = it;
+      item.push({product_id,quantity});
+    }
+    if(selectedAddress){const order ={itemDetails,items:item, totalAmount, totalItems,user_id:user.id,paymentMethod, selectedAddress, status:'pending'}
     dispatch(addOrderAsync(order));
   }
     else{
@@ -52,7 +58,7 @@ function Checkout() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <form className="bg-white px-5 mt-10 " noValidate onSubmit={handleSubmit((data)=>{
-              dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}));
+              dispatch(updateUserAsync({...user,addresses:user.addresses?[...user.addresses,data]:[data]}));
               reset();
             })}>
               <div className="space-y-12">
